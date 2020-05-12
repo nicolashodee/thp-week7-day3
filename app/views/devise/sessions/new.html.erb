@@ -1,5 +1,53 @@
-<h2>Log in</h2>
+<!-- Jumbotron -->
+<div class="card card-image rounded-0" style="background-color: #7f53ac; background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);">
+  <div class="text-white text-center rgba-stylish-strong py-0 px-4">
+  
+    <div class="py-0">
 
+      <!-- Content -->
+      <h2 class="card-title h2 my-4 py-2">Log In</h2>
+      
+    </div>
+  </div>
+</div>
+<!-- Jumbotron -->
+<!-- Formulaire de THP perso-->
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <br><br><br>
+      <%= form_for resource, as: resource_name, url: session_path(resource_name), html: { class: "form-signin mt-3" } do |f| %>
+        <!--messages erreurs -->
+        <%= devise_error_messages! %>
+
+        <!--champ pour email -->
+        <div class="form-group">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+        </div>
+        <!--champ pour mot de passe -->
+        <div class="form-group">
+          <%= f.label :password %><br />
+          <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+        </div>
+        <!--checkbox remember me -->
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end %>
+        <!--bouton log in -->
+        <div class="actions mt-5">
+          <%= f.submit "Log in", class: "btn btn-lg btn-primary btn-block" %>
+        </div>
+      <% end %>
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>
+
+<!--
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
@@ -23,4 +71,4 @@
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%= render "devise/shared/links" %> -->

@@ -1,5 +1,54 @@
-<h2>Change your password</h2>
+<!-- Jumbotron -->
+  <div class="card card-image rounded-0" style="background-color: #a4508b; background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);">
+    <div class="text-white text-center rgba-stylish-strong py-0 px-4">
+    
+      <div class="py-0">
 
+        <!-- Content -->
+        <h2 class="card-title h2 my-4 py-2">Change your password</h2>
+        
+      </div>
+    </div>
+  </div>
+  <!-- Jumbotron -->
+
+
+  <!-- version proposee par THP et adaptee -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <br><br><br>
+        <%= form_for resource, as: resource_name, url: password_path(resource_name), html: {method: :put , class: "form-signin mt-3" } do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          
+          <!-- champ cache pour le token -->
+          <%= f.hidden_field :reset_password_token %>
+          
+          <!-- champ pour le password -->
+          <div class="form-group">
+            <%= f.label :password, "New password" %><br />
+            <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+            <% end %>
+            <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class:'form-control' %>
+          </div>
+
+          <!-- champ pour confirmer le password -->
+          <div class="form-group">
+            <%= f.label :password_confirmation, "Confirm new password" %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class:'form-control' %>
+          </div>
+
+          <!-- champ pour bouton de validation -->
+          <div class="actions mt-5">
+            <%= f.submit "Confirm", class: "btn btn-lg btn-primary btn-block" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- version originale de devise 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
   <%= f.hidden_field :reset_password_token %>
@@ -22,4 +71,8 @@
   </div>
 <% end %>
 
+
+
 <%= render "devise/shared/links" %>
+
+-->

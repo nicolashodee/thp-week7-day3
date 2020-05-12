@@ -6,10 +6,10 @@ class UserMailer < ApplicationMailer
       @user = user 
   
       #on définit une variable @url qu'on utilisera dans la view d’e-mail
-      @url  = 'http://monsite.fr/login' 
+      @url  = 'https://eventbrite-thp-heroku.herokuapp.com/users/sign_in' 
   
       # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-      mail(to: @user.email, subject: 'Bienvenue chez notre Event Brite facon THP !') 
+      mail(to: @user.email, subject: 'Bienvenue chez notre Event Brite facon THP') 
     end
 
 end
