@@ -9,17 +9,25 @@
 </div>
 <!-- Jumbotron -->
 
+<% if @event.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <ul>
+      <% @event.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <div class="container">
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <br><br><br>
-      
         <%= form_for @event, html: { class: "form-signin mt-3" } do |f| %>
        
             <div class="form-group">
                 <%= f.label :start_date, "Date" %><br />
-                <%= f.datetime_field :start_date, autofocus: true, autocomplete: "@random_date", class: "form-control" %>
+                <%= f.date_field :start_date, autofocus: true, autocomplete: "@random_date", class: "form-control" %>
             </div>
 
             <div class="form-group">
@@ -48,7 +56,7 @@
             </div>
 
             <div class="actions">
-                <%= f.submit "Créer l'évènement", class: "btn btn-lg btn-primary btn-block" %>
+                <%= f.submit "Create event", class: "btn btn-lg btn-primary btn-block" %>
             </div>
         <% end %>
 

@@ -4,9 +4,6 @@ class Event < ApplicationRecord
     has_many :attendances
     has_many :users, through: :attendances
 
-    # un event a un seul admin
-    belongs_to :admin, class_name: "User"
-
     # checke la presence et renvoie un message si absent ou incorrect
     validates :start_date, presence:  { message: "Please enter a start date" }
     validates :duration, presence:  { message: "Please enter a duration" }

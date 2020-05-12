@@ -1,24 +1,26 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+THP :Project EventBrite
 
-Things you may want to cover:
+Pas réussi à créer des évènements ou à les éditer via un formulaire :(
 
-* Ruby version
 
-* System dependencies
+Heroku app : https://eventbrite-thp-heroku.herokuapp.com
+
+
+* Ruby version 2.5.1
 
 * Configuration
+run bundle install
 
 * Database creation
+rails db:create
 
 * Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
+rails db:migrate
+rails db:seed
 
 * Deployment instructions
+rails s 
 
 * ...

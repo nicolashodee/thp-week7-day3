@@ -14,6 +14,6 @@
       title: Faker::Book.title,
       description: Faker::TvShows::Community.quotes,
       price: rand(18..28),
-      location: Faker::Address.street_address
+      location: Faker::Address.street_address,
     )
   end

@@ -7,8 +7,8 @@ class EventsController < ApplicationController
     end
   
     def create
-      @random_date = Time.now + 6.days
-      @event = Event.new(title: params[:title], location: params[:location], price: params[:price], description: params[:description], start_date: params[:start_date], duration: params[:duration], admin: current_user)  
+      @event = Event.new(title: params[:title], location: params[:location], price: params[:price], description: params[:description], start_date: params[:start_date], duration: params[:duration])  
+      
       if @event.save
         flash[:success] = "Event successfully created"
         render 'show'
