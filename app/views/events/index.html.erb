@@ -1,0 +1,47 @@
+<!-- Jumbotron -->
+<div class="card card-image rounded-0" style="background-color: #7f53ac; background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);">
+  <div class="text-white text-center rgba-stylish-strong py-0 px-4">
+  
+    <div class="py-0">
+
+      <!-- Content -->
+      <% if user_signed_in? %>
+        <h2 class="card-title h2 my-4 py-2">Welcome, <%= current_user.first_name %> !</h2>
+      <% else %>
+        <h2 class="card-title h2 my-4 py-2">Welcome, dear visitor !</h2>
+      <% end %>
+      
+    </div>
+  </div>
+</div>
+<!-- Jumbotron -->
+
+<div class="container">
+    <div class="row justify-content-center">
+        <% Event.all.reverse.each do |event| %>
+            <!-- Card de boostrap -->
+            <div class="card border-dark col-md-3 mb-5 mt-5 mx-3 " >
+                <!-- Card image -->
+                <div class="bg-light">
+                    <!-- Text -->
+                    <ps><i class=""></i><%= event.start_date %></p>
+                </div>
+                <!-- Card content -->
+                <div class="card-body">
+                    <!-- Title -->
+                    <h4 class="card-title"><%= event.title %></h4>
+                    <!-- Button -->
+                    <%= link_to "View details", event_path(event.id), class: "btn btn-primary" %>
+                </div>
+                <!-- Card footer -->
+                <div class="card-footer text-muted text-center">
+                    <p>
+                        Location : <%= event.location %><br/>
+                        Price : <%= event.price %>€
+                    </p>
+                </div>
+            </div>
+            <!-- Card -->
+        <% end %>
+    </div>
+</div>

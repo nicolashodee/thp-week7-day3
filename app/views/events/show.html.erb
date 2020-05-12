@@ -1,0 +1,30 @@
+<!-- Jumbotron -->
+<div class="card card-image rounded-0" style="background-color: #63d471; background-image: linear-gradient(315deg, #63d471 0%, #233329 74%);">
+  <div class="text-white text-center rgba-stylish-strong py-0 px-4">
+    <div class="py-0">
+      <!-- Content -->
+      <h2 class="card-title h2 my-4 py-2">Event : <%= @event.title %></h2>
+    </div>
+  </div>
+</div>
+<!-- Jumbotron -->
+
+<% if current_user == @event.admin %>
+  <div class="container text-center mb-3">
+    <%= link_to "Edit event", edit_user_registration_path, :class => "btn btn-primary btn-sm text-center" %>
+  </div>
+<% end %>
+
+<div class="container">
+  <div class="card mb-5 mt-5 mx-3">
+    <div class="card-body">
+      <p class="card-text">
+        <%= @event.description %><br/>
+        <small class="text-muted">Price : <%= @event.price %>€</small> <small class="text-muted">/ Location : <%= @event.location %></small> 
+      </p>
+    </div>
+  </div>
+</div>
+
+
+
