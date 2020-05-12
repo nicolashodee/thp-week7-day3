@@ -9,21 +9,22 @@
 </div>
 <!-- Jumbotron -->
 
-<% if current_user == @event.admin %>
-  <div class="container text-center mb-3">
-    <%= link_to "Edit event", edit_user_registration_path, :class => "btn btn-primary btn-sm text-center" %>
-  </div>
-<% end %>
-
 <div class="container">
   <div class="card mb-5 mt-5 mx-3">
     <div class="card-body">
       <p class="card-text">
         <%= @event.description %><br/>
-        <small class="text-muted">Price : <%= @event.price %>€</small> <small class="text-muted">/ Location : <%= @event.location %></small> 
+        <small class="text-muted">Price : <%= @event.price %>€</small> <small class="text-muted"> Location : <%= @event.location %></small> 
       </p>
     </div>
   </div>
+
+  <% if current_user == @event.admin %>
+    <div class="container text-center mb-3">
+        <%= link_to "Edit event", edit_user_registration_path, :class => "btn btn-primary btn-sm text-center" %>
+    </div>
+  <% end %>
+    
 </div>
 
 

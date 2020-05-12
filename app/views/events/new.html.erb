@@ -1,0 +1,57 @@
+<!-- Jumbotron -->
+<div class="card card-image rounded-0" style="background-color: #63d471; background-image: linear-gradient(315deg, #63d471 0%, #233329 74%);">
+  <div class="text-white text-center rgba-stylish-strong py-0 px-4">
+    <div class="py-0">
+      <!-- Content -->
+      <h2 class="card-title h2 my-4 py-2">Create a new event</h2>
+    </div>
+  </div>
+</div>
+<!-- Jumbotron -->
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <br><br><br>
+      
+        <%= form_for @event, html: { class: "form-signin mt-3" } do |f| %>
+       
+            <div class="form-group">
+                <%= f.label :start_date, "Date" %><br />
+                <%= f.datetime_field :start_date, autofocus: true, autocomplete: "@random_date", class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :duration, "Duration" %><br />
+                <%= f.text_field :duration, autocomplete: "duration", class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :title, "Title" %><br />
+                <%= f.text_field :title, autocomplete: "title", class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :description, "Description" %><br />
+                <%= f.text_area :description, autocomplete: "description", class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :price, "Price" %><br />
+                <%= f.text_field :price, autocomplete: "price", class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :location, "Location" %><br />
+                <%= f.text_field :location, autocomplete: "location", class: "form-control" %>
+            </div>
+
+            <div class="actions">
+                <%= f.submit "Créer l'évènement", class: "btn btn-lg btn-primary btn-block" %>
+            </div>
+        <% end %>
+
+    </div>
+  </div>
+</div>

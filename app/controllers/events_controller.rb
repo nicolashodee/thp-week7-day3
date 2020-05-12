@@ -3,17 +3,18 @@ class EventsController < ApplicationController
     before_action :authenticate_user, only: [:new]
 
     def new
+      @event = Event.new
     end
   
     def create
-      @event = Event.new(title: params[:title], location: params[:location], price: params[:price], description: params[:description], start_date: params[:start_date], duration: params[:duration], admin: current_user)
-  
+      @random_date = Time.now + 6.days
+      @event = Event.new(title: params[:title], location: params[:location], price: params[:price], description: params[:description], start_date: params[:start_date], duration: params[:duration], admin: current_user)  
       if @event.save
         flash[:success] = "Event successfully created"
-        redirect_to root_path
+        render 'show'
       else
         flash[:failure] = "Invalid input #{@event.errors.full_messages}"
-        render :new
+        render 'new'
       end
     end
   

@@ -37,6 +37,9 @@
               <li class="nav-item">
                 <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'btn btn-sm btn-danger my-1 mr-2', role:'button' %>
               </li>
+              <li class="nav-item">    
+                <%= link_to "Add an event",  new_event_path , {class: 'btn btn-sm btn-success my-1 mr-2'} %>
+              </li>
             <% else %>
               <li class="nav-item">    
                 <%= link_to "Sign up", new_user_registration_path, {class: 'btn btn-sm btn-secondary my-1 mr-2'} %>
@@ -51,6 +54,12 @@
       </div>
     </nav>
 
+
+    <% flash.each do |name, message| %>
+      <div class="alert alert-<%= name %> text-center mb-0"  role="alert">
+        <li><%= message %></li>
+      </div>
+    <% end %>
 
     <%= yield %></br>
 

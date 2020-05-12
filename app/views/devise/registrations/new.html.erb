@@ -19,7 +19,7 @@
       <br><br><br>
       <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-signin mt-3" } do |f| %>
         <%= devise_error_messages! %>
-
+        
         <div class="form-group">
           <%= f.label :first_name, "First name" %><br />
           <%= f.text_field :first_name, class: 'form-control', placeholder: 'ex: Gaston' %> 

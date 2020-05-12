@@ -5,7 +5,7 @@
     <div class="py-0">
 
       <!-- Content -->
-      <h2 class="card-title h2 my-4 py-2">Edit your settings, <%= resource_name.to_s.humanize %>.</h2>
+      <h2 class="card-title h2 my-4 py-2">Edit your settings, <%= current_user.first_name %>.</h2>
       
     </div>
   </div>
@@ -93,7 +93,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.label :password %> <i>(leave blank if you dont want to change it)</i><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <br />
