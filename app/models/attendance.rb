@@ -1,8 +1,6 @@
 class Attendance < ApplicationRecord
 
-    ##### MODEL Attendance ######
-
-    after_create : attendance_send #on envoit un email 
+    after_create :attendance_send
     belongs_to :user
     belongs_to :event
    
