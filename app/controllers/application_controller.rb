@@ -5,12 +5,9 @@ class ApplicationController < ActionController::Base
     protected
 
     def configure_permitted_parameters
-
-        devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit({ roles: [] }, :first_name, :last_name, :age, :description, :email, :password, :password_confirmation ) }
-        devise_parameter_sanitizer.permit(:sign_in) { |u| u.permit(:first_name, :last_name, :description, :age, :email, :password, :password_confirmation) }
-
-
+        # ajouter de nouveaux parametres a devise, tels que first_name, last_name, pour l'inscription (sign_up) et l'update (account_update) du compte
+        devise_parameter_sanitizer.permit(:sign_up) {|u| u.permit(:first_name, :last_name, :email, :password, :password_confirmation, :description)}
+        devise_parameter_sanitizer.permit(:account_update) {|u| u.permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password, :description)}
     end
-
 
 end

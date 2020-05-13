@@ -16,16 +16,27 @@
 </div>
 <!-- Jumbotron -->
 
+<% flash.each do |name, message| %>
+  <div class="alert alert-<%= name %> text-center mb-0">
+    <%= message %>
+  </div>
+<% end %>
+
+<div class="row justify-content-center m-4">
+  <%= link_to "Add an event",  new_event_path , {class: 'btn btn-secondary btn-lg'} %>
+</div>
+
 <div class="container">
     <div class="row justify-content-center">
+      <div class="card-deck">
         <% Event.all.reverse.each do |event| %>
+          
             <!-- Card de boostrap -->
-            <div class="card border-dark col-md-3  " >
-                <!-- Card image -->
-                <div class="bg-light">
-                    <!-- Text -->
-                    <ps><i class=""></i><%= event.start_date %></p>
+            <div class="card" >
+                <div class="card-header">
+                    <p><i class=""></i><%= event.start_date %></p>
                 </div>
+
                 <!-- Card content -->
                 <div class="card-body">
                     <!-- Title -->
@@ -43,5 +54,6 @@
             </div>
             <!-- Card -->
         <% end %>
+      </div>
     </div>
 </div>

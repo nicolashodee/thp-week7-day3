@@ -9,13 +9,37 @@
 </div>
 <!-- Jumbotron -->
 
+
+<% if @event.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <ul>
+      <% @event.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="container">
   <div class="card mb-5 mt-5 mx-3">
     <div class="card-body">
+      <p class="mb-3"><span class="font-weight-bold">Description :</span> <%= @event.description %></p><br/>
+      <p class="mb-3"><span class="font-weight-bold">Creator email :</span> <%= @event.admin.email %> </p>
+      <p class="mb-3"><span class="font-weight-bold">Creator name :</span> <%= @event.admin.first_name %> <%= @event.admin.last_name %> </p>
+
       <p class="card-text">
-        <%= @event.description %><br/>
-        <small class="text-muted">Price : <%= @event.price %>€</small> <small class="text-muted"> Location : <%= @event.location %></small> 
+      <p class="text-muted">Price : <%= @event.price %>€</p> 
+      <p class="text-muted"> Location : <%= @event.location %></p> 
       </p>
+      <% if signed_in? %>  
+        <% if current_user.id == @event.admin.id %>
+          <%= link_to "Edit event", edit_event_path(@event.id), :type => "button",  :class => 'btn btn-primary mt-4 ml-5' %>
+          <%= link_to "Delete event", event_path(@event.id), :type => "button", :method => :delete, :class => 'btn btn-danger mt-4 ml-5' %>
+        <% end %>
+        <% else %>
+          <small class="text-muted">You need to be logged as the creator of the event to edit this post</small>
+      <% end %>
+
     </div>
   </div>
 </div>

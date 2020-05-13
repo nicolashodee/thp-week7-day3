@@ -54,13 +54,6 @@
       </div>
     </nav>
 
-
-    <% flash.each do |name, message| %>
-      <div class="alert alert-<%= name %> text-center mb-0"  role="alert">
-        <li><%= message %></li>
-      </div>
-    <% end %>
-
     <%= yield %></br>
 
     <!--Bootstrap JS and Jquery-->

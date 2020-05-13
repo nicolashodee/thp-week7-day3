@@ -3,7 +3,11 @@
   <div class="text-white text-center rgba-stylish-strong py-0 px-4">
     <div class="py-0">
       <!-- Content -->
-      <h2 class="card-title h2 my-4 py-2">Create a new event</h2>
+      <% if signed_in? %>
+        <h2 class="card-title h2 my-4 py-2">Amend your event, <%= current_user.first_name %></h2>
+      <% else %>
+        <h2 class="card-title h2 my-4 py-2">Amend your event, anonymous</h2>
+      <% end %>
     </div>
   </div>
 </div>
@@ -18,7 +22,6 @@
     </ul>
   </div>
 <% end %>
-
 
 <div class="container">
   <div class="row">
@@ -55,7 +58,7 @@
               <%= f.text_field :location, autocomplete: "location", class: "form-control" %>
           </div>
 
-          <%= submit_tag "Create event", class: "btn btn-info btn-sm" %>
+          <%= submit_tag "Modify event", class: "btn btn-info btn-sm" %>
         <% end %>
 
     </div>
