@@ -63,4 +63,5 @@ Rails.application.configure do
   ActionMailer::Base.delivery_method = :letter_opener
 	ActionMailer::Base.perform_deliveries = true
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  
 end
