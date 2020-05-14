@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: 'no-reply@eventbrite-nicolas.herokuapp.com'
+  default from: 'webmaster@nicolashodee.com'
   
   def welcome_email(user)
     # We recover user instance so that we can we pass it to the view in @user
