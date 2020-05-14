@@ -91,6 +91,11 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+<<<<<<< HEAD
 
   config.action_mailer.default_url_options = { :host => 'eventbrite-nicolas.herokuapp.com' }
 end
+=======
+  config.action_mailer.default_url_options = { :host => 'YOURAPPNAME.herokuapp.com' }
+end
+>>>>>>> config mailer 14h

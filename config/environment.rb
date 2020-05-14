@@ -6,14 +6,11 @@ Rails.application.initialize!
 
 # parametre le SMTP du mailer de l'application
 ActionMailer::Base.smtp_settings = {
-  :user_name => ENV['SENDGRID_LOGIN'],
-  :password => ENV['SENDGRID_PWD'],
-  :domain => 'monsite.fr',
-  :address => 'smtp.sendgrid.net',
+  :user_name => ENV['GMAIL_LOGIN'],
+  :password => ENV['GMAIL_PWD'],
+  :domain => 'eventbrite-nicolas.herokuapp.com',
+  :address => 'smtp.gmail.com',
   :port => 587,
-  :authentication => :plain,
-  :enable_starttls_auto => true
+  :authentication => :plain
 }
-
-ActionMailer::Base.delivery_method = :smtp
 

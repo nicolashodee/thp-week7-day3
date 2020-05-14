@@ -1,15 +1,18 @@
 class User < ApplicationRecord
-
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
-
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
+  after_create :welcome_send
   has_many :attendances
   has_many :events, through: :attendances
 
-  # appelle welcome_send ci dessous apres la creation d'un user
-  after_create :welcome_send
+  validates :first_name, :last_name, :description,
+    presence: true
+
+  private
 
   def welcome_send
-    # on envoie un email avec la methode welcome_email du user_mailer
     UserMailer.welcome_email(self).deliver_now
   end
 
