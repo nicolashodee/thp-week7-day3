@@ -1,15 +1,14 @@
 class UserMailer < ApplicationMailer
-  default from: 'webmaster@nicolashodee.com'
-
+  default from: 'no-reply@eventbrite-nicolas.herokuapp.com'
+  
   def welcome_email(user)
-    #on récupère l'instance user pour ensuite pouvoir la passer à la view en @user
+    # We recover user instance so that we can we pass it to the view in @user
     @user = user 
-
-    #on définit une variable @url qu'on utilisera dans la view d’e-mail
-    @url  = 'https://eventbrite-nicolas.herokuapp.com/users/sign_in' 
-
-    # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-    mail(to: @user.email, subject: 'Bienvenue chez notre Event Brite facon THP') 
+    
+    # We define a @url variable that we will use in the e-mail view
+    @url  = 'http://eventbrite-nicolas.herokuapp.com/' 
+    
+    # It's this call to mail() that allows you to send e-mail by defining recipient and subject
+    mail(to: @user.email, subject: 'Welcome to our website !') 
   end
-
 end
