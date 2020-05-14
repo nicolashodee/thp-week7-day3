@@ -8,7 +8,7 @@ Rails.application.initialize!
 ActionMailer::Base.smtp_settings = {
   :user_name => ENV['GMAIL_LOGIN'],
   :password => ENV['GMAIL_PWD'],
-  :domain => 'eventbrite-nicolas.herokuapp.com',
+  :domain => 'gmail.com',
   :address => 'smtp.gmail.com',
   :port => 587,
   :authentication => :plain
