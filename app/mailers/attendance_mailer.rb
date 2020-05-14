@@ -1,17 +1,9 @@
 class AttendanceMailer < ApplicationMailer
+  default from: 'webmaster@nicolashodee.com'
 
-    #### ATTENDANCE MAILER ######## 
-    # on definit un mailer pour les participations & creations d'evenements
-    
-    default from: 'accounts@nicolashodee.com'
-    layout 'mailer'
-
-    # methode qui envoie un email pour les nouvelles participations
-    def new_attendee_email(user, attendee, event)
-        @user = user
-        @attendee = attendee
-        @event = event
-
-        mail(to: @user.email, subject: "New attendee")
-      end
+  def attendance_email(attendance)
+    @attendance = attendance
+    @url = 'https://eventbrite-nicolas.herokuapp.com/event/'
+    mail(to: @attendance.user.email, subject: "Tu es inscris à l'évènement #{@attendance.event}")
+  end
 end
