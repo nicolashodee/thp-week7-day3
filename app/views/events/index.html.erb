@@ -16,10 +16,8 @@
 </div>
 <!-- Jumbotron -->
 
-<% flash.each do |name, message| %>
-  <div class="alert alert-<%= name %> text-center mb-0">
-    <%= message %>
-  </div>
+<% flash.each do |type, msg| %>
+  <div class="<%= flash_class(type) %> mt-1 py-1"><%= msg %></div>
 <% end %>
 
 <div class="row justify-content-center m-4">

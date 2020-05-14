@@ -12,6 +12,10 @@
 </div>
 <!-- Jumbotron -->
 
+<% flash.each do |type, msg| %>
+  <div class="<%= flash_class(type) %> mt-1 py-1"><%= msg %></div>
+<% end %>
+
 <%= devise_error_messages! %>
 
 <!-- version proposee par THP -->

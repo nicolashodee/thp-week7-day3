@@ -24,10 +24,10 @@
             <a class="nav-link" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="">Team</a>
+            <a class="nav-link" href="/team">Team</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="">Contact</a>
+            <a class="nav-link" href="/contact">Contact</a>
           </li>
         </ul>
 
@@ -35,6 +35,10 @@
           <ul class="navbar-nav mr-auto">
             <% if user_signed_in? %>
               <li class="nav-item">
+              <li class="nav-item">   
+                <%= link_to "My profile", edit_user_registration_path, {class: 'btn btn-sm btn-secondary my-1 mr-2'}%>
+              </li>
+              <li class="nav-item">   
                 <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'btn btn-sm btn-danger my-1 mr-2', role:'button' %>
               </li>
               <li class="nav-item">    
@@ -42,7 +46,7 @@
               </li>
             <% else %>
               <li class="nav-item">    
-                <%= link_to "Sign up", new_user_registration_path, {class: 'btn btn-sm btn-secondary my-1 mr-2'} %>
+                <%= link_to "Register", new_user_registration_path, {class: 'btn btn-sm btn-secondary my-1 mr-2'} %>
               </li>
 
               <li class="nav-item">    

@@ -9,14 +9,8 @@
 </div>
 <!-- Jumbotron -->
 
-<% if @event.errors.any? %>
-  <div class="alert alert-danger" role="alert">
-    <ul>
-      <% @event.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
+<% flash.each do |type, msg| %>
+  <div class="<%= flash_class(type) %> mt-1 py-1"><%= msg %></div>
 <% end %>
 
 

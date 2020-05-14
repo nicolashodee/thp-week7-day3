@@ -29,7 +29,6 @@ class EventsController < ApplicationController
     #affiche tous les events
     @event = Event.find(params[:id])
     #on prevoie d'afficher le nom complet de l'auteur dans la page show
-    
   end
 
   #creer un array avec les events a venir
