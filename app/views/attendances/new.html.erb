@@ -1,0 +1,32 @@
+<!-- Jumbotron -->
+<div class="card card-image rounded-0" style="background-color: #63d471; background-image: linear-gradient(315deg, #63d471 0%, #233329 74%);">
+  <div class="text-white text-center rgba-stylish-strong py-0 px-4">
+    <div class="py-0">
+      <!-- Content -->
+      <h2 class="card-title h2 my-4 py-2">Join the event : <%= @event.title %></h2>
+    </div>
+  </div>
+</div>
+<!-- Jumbotron -->
+
+<% flash.each do |type, msg| %>
+  <div class="<%= flash_class(type) %> mt-1 py-1"><%= msg %></div>
+<% end %>
+
+<div class="container py-2 text-center">
+<h3 class="mt-5 pt-5">Please proceed to payment to join the event :</h3></br>
+
+<%= form_tag event_attendances_path(@event) do %>
+  <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+    <label class="amount">
+      <span>Price: <%=@event.price%> €</span>
+    </label>
+  </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="<%= Rails.configuration.stripe[:publishable_key] %>" data-description="Join Event : <%= @event.title %>" data-amount="<%=@amount%>" data-locale="auto" </script>
+<% end %>

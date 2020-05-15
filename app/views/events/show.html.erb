@@ -9,20 +9,17 @@
 </div>
 <!-- Jumbotron -->
 
-<% flash.each do |type, msg| %>
-  <div class="<%= flash_class(type) %> mt-1 py-1"><%= msg %></div>
-<% end %>
-
 <% if @event.errors.any? %>
-  <div class="alert alert-danger" role="alert">
-    <ul>
-      <% @event.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+      <div class="alert alert-danger" role="alert">
+        <ul>
+          <% @event.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
+<!-- CONTENU -->
 <div class="container">
   <div class="card mb-5 mt-5 mx-3">
     <div class="card-body">
@@ -34,13 +31,21 @@
       <p class="text-muted">Price : <%= @event.price %>€</p> 
       <p class="text-muted"> Location : <%= @event.location %></p> 
       </p>
-      <% if signed_in? %>  
-        <% if current_user.id == @event.admin.id %>
-          <%= link_to "Edit event", edit_event_path(@event.id), :type => "button",  :class => 'btn btn-primary mt-4 ml-5' %>
-          <%= link_to "Delete event", event_path(@event.id), :type => "button", :method => :delete, :class => 'btn btn-danger mt-4 ml-5' %>
+
+      <!-- bloc pour afficher les boutons selon l'utilisateur connecte -->
+      <% if signed_in? %>
+        <% if current_user == @event.admin %>
+          <%= link_to "Manage my event", event_attendances_path(@event), class: 'btn btn-info mt-1 ml-1' %>
         <% end %>
-        <% else %>
-          <small class="text-muted">You need to be logged as the creator of the event to edit this post</small>
+        <% if current_user.id == @event.admin.id %>
+          <%= link_to "Edit event", edit_event_path(@event.id), :type => "button",  :class => 'btn btn-info mt-1 ml-1' %>
+          <%= link_to "Delete event", event_path(@event.id), :type => "button", :method => :delete, :class => 'btn btn-danger mt-1 ml-1' %>
+        <% end %>
+        <% if Attendance.where(event: @event,user: current_user).empty? && current_user != @event.admin %>
+          <%= link_to "Join event", new_event_attendance_path(@event), :type => "button",  :class => 'btn btn-success mt-1 ml-1' %>
+        <% end %>
+      <% else %>
+        <small style="color:green;" class="">You need to be logged in to join this event</small>
       <% end %>
 
     </div>

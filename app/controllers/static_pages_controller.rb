@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+  before_action :authenticate_user, only: [:secret, :explain]
+
   def index
   end
 
@@ -9,5 +11,8 @@ class StaticPagesController < ApplicationController
   end
 
   def secret
+  end
+
+  def explain
   end
 end
