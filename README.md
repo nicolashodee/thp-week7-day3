@@ -1,11 +1,11 @@
 # README
 
-THP :Project EventBrite
+THP : Project EventBrite, day 3
 
-Pas réussi à créer des évènements ou à les éditer via un formulaire :(
+En attente des API Stripe.
+On progresse, on progresse...
 
-
-Heroku app : https://eventbrite-thp-heroku.herokuapp.com
+Heroku app : https://eventbrite-v2-nicolas.herokuapp.com
 
 
 * Ruby version 2.5.1
