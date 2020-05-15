@@ -30,6 +30,7 @@
       <p class="card-text">
       <p class="text-muted">Price : <%= @event.price %>€</p> 
       <p class="text-muted"> Location : <%= @event.location %></p> 
+      <p class="text-muted"> Attendees: <%= @event.users.count %> members are going to this event.</p>
       </p>
 
       <!-- bloc pour afficher les boutons selon l'utilisateur connecte -->
